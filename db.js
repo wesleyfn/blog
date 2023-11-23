@@ -5,7 +5,7 @@ var conexao = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: '007',
-    database: 'bd_blog',
+    database: 'db_blog',
     multipleStatements: true
 });
 
