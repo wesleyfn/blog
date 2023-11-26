@@ -1,30 +1,60 @@
-<div class="container-box">
-    <% for (let i = 0; i < data.length; i++) { %>
-        <div class="card-body">
-            <div class="count">
-                <span><%= i + 1 %>.</span>
-            </div>
-            <article style="max-width: 50rem;">
-                <div class="title">
-                    <a href=""><%= data[i].article_title %></a>
-                </div>
-                <div class="info">
-                    <span><%= data[i].article_likes %> curtidas</span>
-                    ·
-                    <span>
-                        <%= data[i].article_comments %>
-                        <% if (data[i].article_comments == 1) { %>
-                            comentário
-                        <% } else { %>
-                            comentários
-                        <% } %>
-                    </span>
-                    ·
-                    <a href="#"><%= data[i].user_name %></a>
-                    ·
-                    <span><%= data[i].time_posted %></span>
-                </div>
-            </article>
-        </div>
+<%- include('parts/header.ejs'); -%>
+
+    <% function formatTime(diffSecs) { %>
+        <% 
+            const timeUnits = [
+                { unit: 'dia', divisor: 86400 }, { unit: 'hora', divisor: 3600 },
+                { unit: 'minuto', divisor: 60 }, { unit: 'segundo', divisor: 1 }
+            ];
+
+            let result = 'alguns segundos';
+
+            for (const unit of timeUnits) {
+                const value = Math.floor(diffSecs / unit.divisor);
+                diffSecs %= unit.divisor;
+
+                if (value > 1) {
+                    result = `${value} ${unit.unit}s`;
+                    break;
+                } else if (value === 1) {
+                    result = `1 ${unit.unit}`;
+                    break;
+                }
+            }
+        %>
+        <%= result %>
     <% } %>
-</div>
+
+    <div class="home container">
+        <% for (let i = 0; i < data.length; i++) { %>
+            <div class="card-body">
+                <div class="count">
+                    <span><%= i + 1 %>.</span>
+                </div>
+                <article style="max-width: 50rem;">
+                    <div class="title">
+                        <a href=""><%= data[i].article_title %></a>
+                    </div>
+                    <div class="info text-white-50">
+                        <span><%= data[i].article_likes %> curtidas</span>
+                        ·
+                        <span>
+                            <%= data[i].article_comments %>
+                            <% if (data[i].article_comments == 1) { %>
+                                comentário
+                            <% } else { %>
+                                comentários
+                            <% } %>
+                        </span>
+                        ·
+                        <a href="#"><%= data[i].user_name %></a>
+                        ·
+                        <span>
+                            <%= formatTime(data[i].diff_secs) %>
+                        </span>
+                    </div>
+                </article>
+            </div>
+        <% } %>
+    </div>
+<%- include('parts/footer.ejs'); -%>
