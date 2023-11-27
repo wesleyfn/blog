@@ -33,7 +33,9 @@
                 </div>
                 <article style="max-width: 50rem;">
                     <div class="title">
-                        <a href=""><%= data[i].article_title %></a>
+                        <a href="/article/<%= data[i].id_article %>">
+                            <%= data[i].article_title %>
+                        </a>
                     </div>
                     <div class="info text-white-50">
                         <span><%= data[i].article_likes %> curtidas</span>
@@ -57,4 +59,5 @@
             </div>
         <% } %>
     </div>
+
 <%- include('parts/footer.ejs'); -%>

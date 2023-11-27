@@ -2,39 +2,56 @@
 
 <div class="article container">
     <div class="container mt-5">
-        <!-- Título do Artigo -->
-        <h1 class="mb-3">Título do Artigo</h1>
+        <div>
+            <!-- FAZER O RESTO DOS BOTOES DE UPDATE, DELETE E EDIT -->
+            <!-- COLOCAR UM MODAL PARA PERGUNTAR SE HÁ CERTEZA NO MOMENTO DE DELETAR -->
+            <form action="/article/<%= data[0].id_article %>/delete" method="post">
+                <button class="btn btn-primary" type="submit">Delete</button>
+            </form>
+        </div>
 
+        <!-- Informações do Autor -->
+        <div>
+            <h5 class="fw-bold">Autor: <%= data[0].article_author %></h5>
+        </div>
+
+        <!-- Título do Artigo -->
+        <h1 class="mb-3"><%= data[0].article_title %></h1>
+        
         <!-- Corpo do Artigo -->
         <div class="mb-4">
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore
-                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                aliquip ex ea commodo consequat.
-            </p>
+            <article style="text-align: justify;"><%= data[0].article_body %></article>
             <!-- Adicione mais conteúdo do artigo conforme necessário -->
         </div>
 
         <!-- Informações do Artigo -->
         <div class="mb-4">
             <!-- Quantidade de Likes -->
-            <p class="fw-bold">Likes: 100</p>
+            <p class="fw-bold">Likes: <%= data[0].article_likes %></p>
 
             <!-- Seção de Comentários -->
-            <div>
-                <h3 class="mb-3">Comentários</h3>
-                <!-- Lista de Comentários -->
-                <ul class="list-group">
-                    <li class="list-group-item">Comentário 1</li>
-                    <li class="list-group-item">Comentário 2</li>
-                    <!-- Adicione mais comentários conforme necessário -->
-                </ul>
+            <div>   
+                <p class="d-inline-flex gap-1">
+                    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        Responder
+                    </button>
+                </p>
+                <div class="collapse" id="collapseExample">
+                    <div id="editor"></div>
+                </div>
+                <div class="">
+                    <ul class="">
+                        <% data.forEach(comment => { %>
+                            <li class="list-group-item">
+                                <div><%= comment.comment_content %></div>
+                                <div class="info text-white-50 mb-3">
+                                    Comentado por: <%= comment.comment_author_name %>
+                                </div>
+                            </li>
+                        <% }); %>
+                    </ul>
+                </div>
             </div>
-        </div>
-
-        <!-- Informações do Autor -->
-        <div>
-            <h5 class="fw-bold">Autor: Nome do Autor</h5>
         </div>
     </div>
 </div>

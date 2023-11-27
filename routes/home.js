@@ -5,7 +5,8 @@ const mysql = require('../db');
 // Função para gerar uma SQL query ordenada de acordo com o sortBy
 function generate_SQL(sort_by) {
     return `
-    SELECT 
+    SELECT
+        A.id_article,
         A.article_title,
         A.article_likes,
         U.user_name,

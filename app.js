@@ -4,10 +4,12 @@ const app = express();
 
 // Importando rotas
 const home_routes = require('./routes/home');
+const article_route = require('./routes/article');
 
 
 // Utilizando as rotas
 app.use('/', home_routes);
+app.use('/article', article_route);
 
 
 
