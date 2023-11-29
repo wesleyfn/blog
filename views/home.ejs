@@ -26,6 +26,15 @@
     <% } %>
 
     <div class="home container">
+        <div class="btn-group align-self-end">
+            <span class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Organizar por
+            </span>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/recentes" role="button">Recentes</a></li>
+              <li><a class="dropdown-item" href="/comentados" role="button">Comentados</a></li>
+            </ul>
+        </div>
         <% for (let i = 0; i < data.length; i++) { %>
             <div class="card-body">
                 <div class="count">
