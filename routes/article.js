@@ -33,7 +33,7 @@ router.get('/:id_article', (req, res) => {
 
     mysql.query(sql, (err, result) => {
         if (err) throw err;
-        console.log(result);
+
         res.render('article', {
             data: result
         });
@@ -68,5 +68,19 @@ router.post('/:id_article/delete', (req, res) => {
         res.redirect('/');
     });
 });
+
+// Rota para processar a solicitação de exclusão
+/* router.post('/create', (req, res) => {
+    const id_article = req.body;
+
+    const delete_SQL = generate_delete_SQL(id_article);
+
+    mysql.query(delete_SQL, (err, result) => {
+        if (err) throw err;
+
+        // Redirecionar de volta para a lista de artigos após a exclusão
+        res.redirect('/');
+    });
+}); */
 
 module.exports = router;

@@ -15,25 +15,31 @@
 <body>
     <div class="text-white">
         <nav class="navbar-expand-sm">
-            <div class="header">
-                <a class="btn-navbar" href="/">Início</a>
-                <%- include('../login.ejs'); -%>
-<!--                 <a class="btn-navbar" href="/register" role="button">Cadastre-se</a> -->
+            <div class="header gap-3">
+                <div>
+                    <a class="btn-navbar" href="/">Início</a>
+                </div>
+                <% if (user) { %>
+                    <!-- Se o usuário estiver logado, exibe o nome do usuário e o botão de logout -->
+                    <div class="">
+                        <a class="btn btn-outline-success p-1 mx-5 d-flex align-content-center justify-content-center" href="/article/create">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+                                </svg>
+                        </a>
+                    </div>
+                    <div>
+                        <span class="me-3">Bem-vindo, <%= user.user_name %>!</span>
+                        <a class="btn btn-outline-danger" href="/logout">Logout</a>
+                    </div>
+                <% } else { %>
+                    <!-- Se o usuário não estiver logado, inclui o formulário de login -->
+                    <div>
+                        <%- include('../login.ejs'); -%>
+                    </div>
+                <% } %>
             </div>
         </nav>
-
-<!--         <header class="header">
-            <div class="d-inline-flex gap-2">
-                
-                <a class="btn btn-outline-primary btn-sm" href="/recentes" role="button">+ Recentes</a>
-                <a class="btn btn-outline-primary btn-sm" href="/comentados" role="button">+ Comentados</a>
-            </div>
-            <div>
-                <form action="/create" method="post">
-                    <button class="btn btn-primary" type="submit">Create</button>
-                </form>
-            </div>
-
-        </header>
- -->
         <main class="main-container">
+
+            

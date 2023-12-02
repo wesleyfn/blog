@@ -5,9 +5,10 @@
         <div>
             <!-- FAZER O RESTO DOS BOTOES DE UPDATE, DELETE E EDIT -->
             <!-- COLOCAR UM MODAL PARA PERGUNTAR SE HÁ CERTEZA NO MOMENTO DE DELETAR -->
-            <form action="/article/<%= data[0].id_article %>/delete" method="post">
-                <button class="btn btn-primary" type="submit">Delete</button>
-            </form>
+            <% if (user && user.id_user === data[0].fk_user_creator) { %>
+                <!-- Exibir a opção de exclusão apenas para o autor -->
+                <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+            <% } %>
         </div>
 
         <!-- Informações do Autor -->
@@ -37,8 +38,9 @@
                     </button>
                 </p>
                 <div class="collapse" id="collapseExample">
-                    <div id="editor"></div>
+                    
                 </div>
+                <div id="editor"></div>
                 <div class="">
                     <ul class="">
                         <% data.forEach(comment => { %>
@@ -51,6 +53,28 @@
                         <% }); %>
                     </ul>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal de Confirmação de Exclusão -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-white">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Confirmação de Exclusão</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Tem certeza que deseja excluir este artigo?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <form class="d-flex justify-content-end" action="/article/<%= data[0].id_article %>/delete" method="post">
+                    <button type="submit" class="btn btn-danger">Excluir</button>
+                </form>
             </div>
         </div>
     </div>

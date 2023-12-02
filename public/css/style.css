@@ -1,3 +1,4 @@
+
 * {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
     line-height: 1.5;
@@ -112,9 +113,12 @@ body>div {
     color: #fff;
 }
 
-.home .dropdown-toggle, .dropdown-menu {
+.home .dropdown-toggle,
+.dropdown-menu {
     align-self: end;
 }
+
+/* HEADER */
 
 .header {
     padding: 12px 64px;
@@ -126,21 +130,97 @@ body>div {
     background-color: rgb(22, 27, 34);
 }
 
+.header > div {
+    width: 300px;
+    text-align: center;
+}
+
+/* .header .dropdown {
+    font-size: small;
+} */
+
+.header .dropdown .form-control {
+    min-height: 0;
+    height: 45px;
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid #0b5ed777;
+}
+
+.header .dropdown .form-floating>label {
+    font-size: .857rem;
+    padding: .7rem .7rem;
+}
+
+.header .dropdown .form-control:focus {
+    padding: 0;
+    padding-left: .7rem;
+    box-shadow: 0 0 0 .15rem #0b5ed777;
+}
+
 .header .dropdown form,
 .header .dropdown input,
-.header .dropdown .form-floating > .form-control:focus~label::after,
-.header .dropdown .form-floating > .form-control:not(:placeholder-shown)~label::after {
+.header .dropdown .form-floating>.form-control:focus~label::after,
+.header .dropdown .form-floating>.form-control:not(:placeholder-shown)~label::after {
     border-color: rgb(13, 17, 23);
     background-color: rgb(22, 27, 34);
     color: #ffffff;
 }
 
-.header .dropdown .form-floating > .form-control:focus~label,
-.header .dropdown .form-floating > .form-control:not(:placeholder-shown)~label {
+.header .dropdown .form-floating>.form-control:focus~label,
+.header .dropdown .form-floating>.form-control:not(:placeholder-shown)~label {
+    color: #ffffff;
+    transform: scale(.85) translateY(-1.7rem) translateX(.15rem);
+}
+
+.header .dropdown .form-floating>.form-control:not(:placeholder-shown) {
+    padding: 0;
+    padding-left: 0.5rem;
+}
+
+.header .dropdown .dropdown-menu {
+    width: max-content;
+}
+
+/* REGISTER */
+
+
+.register .form-control {
+    min-height: 0;
+    height: 45px;
+    border-radius: 0;
+    background-color: rgb(13, 17, 23);
+    border: none;
+    border-bottom: 1px solid #0b5ed777;
     color: #ffffff;
 }
 
 
-.header .dropdown .dropdown-menu {
-    width: max-content;
+.register .form-floating>label {
+    font-size: .857rem;
+    padding: .7rem .7rem;
+}
+
+.register .form-control:focus {
+    padding: 0;
+    padding-left: .7rem;
+    box-shadow: 0 0 0 .15rem #0b5ed777;
+}
+
+.register input,
+.register .form-floating>.form-control:focus~label::after,
+.register .form-floating>.form-control:not(:placeholder-shown)~label::after {
+    color: #ffffff;
+    background-color: rgb(13, 17, 23);
+}
+
+.register .form-floating>.form-control:focus~label,
+.register .form-floating>.form-control:not(:placeholder-shown)~label {
+    color: #ffffff;
+    transform: scale(.85) translateY(-1.7rem) translateX(.15rem);
+}
+
+.register .form-floating>.form-control:not(:placeholder-shown) {
+    padding: 0;
+    padding-left: 0.5rem;
 }

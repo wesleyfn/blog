@@ -3,18 +3,18 @@
         data-bs-auto-close="outside">
         Entrar
     </button>
-    <form class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start p-4">
+    <form action="/login" method="post" class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start p-4">
         <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-            <label for="floatingInput">Endereço de Email</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="" required>
+            <label for="username">Nome</label>
         </div>
         <div class="form-floating">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="senha">
-            <label for="floatingPassword">Senha</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="" required>
+            <label for="password">Senha</label>
         </div>
         <div class="mx-1 mb-3">
-            <small>Novato? <a href="/register">Cadastre-se aqui.</a></small>
+            <small style="font-size: .857rem;">Não tem uma conta? <a href="/register">Cadastre-se aqui.</a></small>
         </div>
-        <button type="submit" class="btn btn-primary">Login</button>
+        <button type="submit" class="btn btn-primary w-100">Acessar</button>
     </form>
 </div>

@@ -1,25 +1,39 @@
 const express = require('express');
 const router = express.Router();
+const bcrypt = require('bcrypt');
+
 const mysql = require('../db');
 
-router.get('/login', (req, res) => {
-    res.render('login');
+
+router.get('/', (req, res) => {
+    res.redirect('/');
 });
 
-router.post('/login', async (req, res) => {
+router.post('/', async (req, res) => {
     const { username, password } = req.body;
 
-    // Procurar usuário no banco de dados
-    mysql.query('SELECT * FROM users WHERE username = ?', [username], async (err, results) => {
+    const sql = 'SELECT * FROM User WHERE user_name = ?';
+    mysql.query(sql, [username], async (err, results) => {
         if (err) throw err;
 
-        // Verificar senha
-        if (results.length > 0 && (await bcrypt.compare(password, results[0].password))) {
-            req.session.userId = results[0].id;
-            return res.redirect('/dashboard');
-        }
+        if (results.length > 0) {
+            const user = results[0];
 
-        res.redirect('/login');
+            // Comparar a senha fornecida com a senha armazenada no banco de dados
+            const passwordMatch = await bcrypt.compare(password, user.user_password);
+            if (passwordMatch) {
+                // Autenticação bem-sucedida, salve informações do usuário na sessão se necessário
+                req.session.user = user;
+                console.log('Usuário logado com sucesso');
+                res.redirect('/');  // Redirecione para a página do dashboard ou outra página após o login
+            } else {
+                // Senha incorreta
+                res.send('Senha incorreta');
+            }
+        } else {
+            // Usuário não encontrado
+            res.send('Usuário não encontrado');
+        }
     });
 });
 

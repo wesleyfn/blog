@@ -27,7 +27,8 @@ function handle_route(req, res, sort_by) {
         if (err) throw err;
 
         res.render('home', {
-            data: result
+            data: result,
+            user: req.session.user
         });
     });
 }
