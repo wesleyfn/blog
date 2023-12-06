@@ -25,7 +25,7 @@ router.post('/', async (req, res) => {
                 // Autenticação bem-sucedida, salve informações do usuário na sessão se necessário
                 req.session.user = user;
                 console.log('Usuário logado com sucesso');
-                res.redirect('/');  // Redirecione para a página do dashboard ou outra página após o login
+                res.redirect(req.get('referer'));
             } else {
                 // Senha incorreta
                 res.send('Senha incorreta');

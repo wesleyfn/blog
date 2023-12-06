@@ -3,9 +3,8 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
     // Limpar a sessão (fazer logout)
-    console.log('Rota /logout acionada');
     req.session.destroy(() => {
-        res.redirect('/');
+        res.redirect(req.get('referer'));
     });
 });
 

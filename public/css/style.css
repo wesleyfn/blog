@@ -1,14 +1,8 @@
-
 * {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.5;
 }
 
-hr {
-    margin: 0.3rem 0;
-    border-style: dashed;
-    opacity: .15;
-}
 
 .home a {
     color: inherit;
@@ -19,20 +13,20 @@ hr {
     text-decoration: underline;
 }
 
-body>div {
-    min-height: 100vh;
+
+body,
+.bg-maindark {
     background-color: rgb(13, 17, 23);
 }
 
 
-
 .main-container {
     max-width: 1012px;
-    margin: 25px auto 0 auto;
     margin-left: auto;
     margin-right: auto;
     display: flex;
     flex-wrap: wrap;
+    padding: 16px 8px 8px;
 }
 
 .footer {
@@ -65,6 +59,10 @@ body>div {
     margin: 0 1rem;
 }
 
+.info {
+    font-size: .800em;
+}
+
 .badge {
     padding: 2px 3px 0 3px;
     line-height: 1;
@@ -89,10 +87,7 @@ body>div {
 
 .container .count {
     text-align: right;
-}
-
-.container .info {
-    font-size: .875em;
+    width: 22px;
 }
 
 /* HEADER NAVBAR */
@@ -121,7 +116,7 @@ body>div {
 /* HEADER */
 
 .header {
-    padding: 12px 64px;
+    padding: 12px;
     line-height: 1.5;
     flex-wrap: nowrap;
     display: flex;
@@ -130,8 +125,8 @@ body>div {
     background-color: rgb(22, 27, 34);
 }
 
-.header > div {
-    width: 300px;
+.header>div {
+    width: auto;
     text-align: center;
 }
 
@@ -184,7 +179,8 @@ body>div {
 
 /* REGISTER */
 
-
+.article .form-control,
+.comment .form-control,
 .register .form-control {
     min-height: 0;
     height: 45px;
@@ -223,4 +219,63 @@ body>div {
 .register .form-floating>.form-control:not(:placeholder-shown) {
     padding: 0;
     padding-left: 0.5rem;
+}
+
+/* ARTICLE */
+
+.article a {
+    display: inline-block;
+    padding: 2px 6px;
+    font-size: 12px;
+    font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    color: rgb(47, 129, 247);
+    background-color: rgba(56, 139, 253, 0.1);
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+.article a:hover {
+    text-decoration: underline;
+}
+
+.article main {
+    width: 100%;
+    display: flex;
+}
+
+.article .left {
+    padding-right: 8px;
+    display: flex;
+    flex-direction: column;
+    -moz-box-pack: center;
+    justify-content: center;
+}
+
+.article .left .likes {
+    display: flex;
+    flex-direction: column;
+    -moz-box-align: center;
+    align-items: center;
+    margin-top: 9px;
+}
+
+.article .right {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+    border-width: 0px;
+    padding: 0px;
+    border-radius: 6px;
+    border-color: rgb(48, 54, 61);
+    border-style: solid;
+    word-break: break-word;
+}
+
+.article .number-like {
+    font-size: 12px;
+    font-weight: 600;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    color: rgb(31, 111, 235);
 }

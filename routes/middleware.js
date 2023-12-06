@@ -3,4 +3,5 @@ const setUserVariable = (req, res, next) => {
     next();
 };
 
+
 module.exports = setUserVariable;

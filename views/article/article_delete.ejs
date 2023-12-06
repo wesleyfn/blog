@@ -1,0 +1,15 @@
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true" data-bs-theme="dark">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-3 shadow">
+        <div class="modal-body p-4 text-center">
+            <h5 class="mb-3">Tem certeza que deseja excluir esse artigo?</h5>
+            <p class="mb-0">Essa operação não pode ser desfeita.</p>
+        </div>
+        <form class="modal-footer flex-nowrap p-0" action="/article/<%= data[0].id_article %>/delete" method="post">
+            <button type="submit" class="btn btn-lg btn-link col-6 fs-6 text-decoration-none"><strong>Sim</strong></button>
+            <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" data-bs-dismiss="modal">Cancelar</button>
+        </form>
+        </div>        
+    </div>
+
+</div>

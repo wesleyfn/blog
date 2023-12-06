@@ -7,31 +7,32 @@
     <link rel="stylesheet" href="/css/reset.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="https://cdn.quilljs.com/1.3.6/quill.snow.css" />
-
     <title>Blog</title>
 </head>
 
 <body>
     <div class="text-white">
         <nav class="navbar-expand-sm">
-            <div class="header gap-3">
-                <div>
-                    <a class="btn-navbar" href="/">Início</a>
+            <div class="header px-4">
+                <div class="">
+                    <a class="btn-navbar me-4" href="/">Início</a>
                 </div>
                 <% if (user) { %>
-                    <!-- Se o usuário estiver logado, exibe o nome do usuário e o botão de logout -->
-                    <div class="">
-                        <a class="btn btn-outline-success p-1 mx-5 d-flex align-content-center justify-content-center" href="/article/create">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+                <!-- Se o usuário estiver logado, exibe o nome do usuário e o botão de logout -->
+                <div class="d-flex align-items-center">
+                    <span>
+                        <div data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Nova Postagem">
+                            <a class="btn btn-info p-1 d-flex align-content-center justify-content-center" href="../article/create">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-plus-lg"
+                                    viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2" />
                                 </svg>
-                        </a>
-                    </div>
-                    <div>
-                        <span class="me-3">Bem-vindo, <%= user.user_name %>!</span>
-                        <a class="btn btn-outline-danger" href="/logout">Logout</a>
-                    </div>
+                            </a>
+                        </div>
+                    </span>
+                    <span class="mx-3"><%= user.user_name %></span>
+                    <span><a class="btn btn-outline-secondary btn-sm" href="/logout">Sair</a></span>
+                </div>
                 <% } else { %>
                     <!-- Se o usuário não estiver logado, inclui o formulário de login -->
                     <div>

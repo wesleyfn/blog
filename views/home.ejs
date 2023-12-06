@@ -1,36 +1,10 @@
 <%- include('parts/header.ejs'); -%>
-
-    <% function formatTime(diffSecs) { %>
-        <% 
-            const timeUnits = [
-                { unit: 'dia', divisor: 86400 }, { unit: 'hora', divisor: 3600 },
-                { unit: 'minuto', divisor: 60 }, { unit: 'segundo', divisor: 1 }
-            ];
-
-            let result = 'alguns segundos';
-
-            for (const unit of timeUnits) {
-                const value = Math.floor(diffSecs / unit.divisor);
-                diffSecs %= unit.divisor;
-
-                if (value > 1) {
-                    result = `${value} ${unit.unit}s`;
-                    break;
-                } else if (value === 1) {
-                    result = `1 ${unit.unit}`;
-                    break;
-                }
-            }
-        %>
-        <%= result %>
-    <% } %>
-
     <div class="home container">
         <div class="btn-group align-self-end">
             <span class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Organizar por
+              Organizar por +
             </span>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu" data-bs-theme="dark">
               <li><a class="dropdown-item" href="/recentes" role="button">Recentes</a></li>
               <li><a class="dropdown-item" href="/comentados" role="button">Comentados</a></li>
             </ul>
@@ -61,7 +35,7 @@
                         <a href="#"><%= data[i].user_name %></a>
                         ·
                         <span>
-                            <%= formatTime(data[i].diff_secs) %>
+                            <%= data[i].formattedTime %>
                         </span>
                     </div>
                 </article>

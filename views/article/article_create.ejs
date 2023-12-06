@@ -1,0 +1,18 @@
+<%- include('../parts/header.ejs') %>
+
+<div class="article container d-flex flex-column align-content-center justify-content-center">
+    <h1>Publicar nova postagem</h1>
+    <form action="/article/create" method="post">
+        <div class="mb-3">
+            <input type="text" class="form-control" id="article_title" name="article_title" placeholder="Título">
+        </div>
+        <div class="mb-3">
+            <textarea rows="10" cols="50" class="form-control" style="min-height: 20rem;" id="article_body" name="article_body" placeholder="Lorem ipsum dolor sit..."></textarea>
+        </div>
+        <div class="border-0 p-0 text-end">
+            <button type="submit" class="btn btn-primary">Publicar</button>
+        </div>
+    </form>
+</div>
+
+<%- include('../parts/footer.ejs') %>

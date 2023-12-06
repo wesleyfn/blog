@@ -1,0 +1,25 @@
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true"
+    data-bs-theme="dark">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="editModalLabel">Publicar novo conteúdo</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="<%= data[0].id_article %>/edit" method="post">
+                    <div class="mb-3">
+                        <input type="text" class="form-control" value="<%= data[0].article_title %>" name="article_title" placeholder="Título">
+                    </div>
+                    <div class="mb-3">
+                        <textarea class="form-control" style="min-height: 20rem;" rows="5" name="article_body"><%= data[0].article_body %></textarea>
+                    </div>
+                    <div class="modal-footer border-0 p-0">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary" >Editar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

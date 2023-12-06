@@ -1,0 +1,112 @@
+<%- include('../parts/header.ejs'); -%>
+
+    <div class="article container">
+        <div class="mt-5">
+            <!-- Corpo do Artigo -->
+            <main class="article-main mb-4">
+                <div class="left">
+                    <form class="likes" action="<%= data[0].id_article %>/like" method="post">
+                        <span class="up-like mt-2">
+                            <button type="submit" class="btn btn-like" name="action" value="like">
+                                <svg focusable="false" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block; user-select:none; vertical-align:text-center; overflow:visible;">
+                                    <path d="M3.22 10.53a.749.749 0 0 1 0-1.06l4.25-4.25a.749.749 0 0 1 1.06 0l4.25 4.25a.749.749 0 1 1-1.06 1.06L8 6.811 4.28 10.53a.749.749 0 0 1-1.06 0Z"></path>
+                                </svg>
+                            </button>
+                        </span>
+                        <span class="number-like">
+                            <%= data[0].article_likes %>
+                        </span>
+                        <span class="down-like">
+                            <button type="submit" class="btn btn-notlike" name="action" value="notlike">
+                                <svg focusable="false" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block; user-select:none; vertical-align:text-center; overflow:visible">
+                                    <path d="M12.78 5.22a.749.749 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.06 0L3.22 6.28a.749.749 0 1 1 1.06-1.06L8 8.939l3.72-3.719a.749.749 0 0 1 1.06 0Z"></path>
+                                </svg>
+                            </button>
+                        </span>
+                    </form>
+                    <div style="border-width: 0px 1px 0px 0px; border-color: rgb(110, 118, 129); border-style: dotted; width: 50%; height: 100%;"></div>
+                </div>
+                <div class="right">
+                    <!-- Informações do Autor -->
+                    <div class="info text-white-50">
+                        <h5 class="fw-bold"></h5>
+                        <div class="text-start d-flex" style="height: 31px;">
+                            <div class="d-flex align-items-end gap-1">
+                                <span><a href=""><%= data[0].article_author %></a></span>
+                                ·
+                                <span><%= data[0].formattedTime %></span>
+                            </div>
+                            <div class="ms-auto">
+                                <% if (user && user.id_user === data[0].fk_user_creator) { %>
+                                <!-- Exibir a opção de exclusão apenas para o autor -->
+                                <button class="btn btn-outline-secondary btn-sm me-2" type="button" data-bs-toggle="modal" data-bs-target="#editModal">Editar</button>
+                                <button class="btn btn-outline-secondary btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal">Deletar</button>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <!-- Título do Artigo -->
+                        <h1 class="mb-3">
+                            <p><%= data[0].article_title %></p>
+                        </h1>
+                        <article>
+                            <p><%= data[0].article_body %></p>
+                        </article>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Informações do Artigo -->
+            <div class="comment mb-4">
+                <!-- Seção de Comentários -->
+                <div>
+                    <% if (user) { %>
+                    <p class="d-inline-flex gap-1">
+                        <button class="btn btn-outline-primary btn-sm" data-bs-toggle="collapse"
+                            data-bs-target="#collapseComment" aria-expanded="false" aria-controls="collapseComment">
+                            Responder
+                        </button>
+                    </p>
+                    <% } %>
+                    
+                    <div class="collapse" id="collapseComment">
+                        <div class="card bg-maindark">
+                            <form action="<%= data[0].id_article %>/comment/create" method="post">
+                                <div class="mb-3">
+                                    <textarea class="form-control bg-maindark" style="min-height: 10rem;" id="comment_content" name="comment_content" placeholder="Lorem ipsum dolor sit..." autofocus></textarea>
+                                </div>
+                                <div class="modal-footer border-0 p-0">
+                                    <button type="submit" class="btn btn-primary btn-sm">Comentar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <div class="">
+                        <ul class="">
+                            <% data.forEach(comment=> { %>
+                                <li class="list-group-item">
+                                    <div>
+                                        <%= comment.comment_content %>
+                                    </div>
+                                    <div class="info text-white-50 mb-3">
+                                        ~ <%= comment.comment_author_name %>
+                                    </div>
+                                </li>
+                            <% }); %>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para confirmação de remoção de artigo -->
+    <%- include('article_delete.ejs') -%>
+
+        <!-- Modal para edição de título e conteúdo do artigo -->
+        <%- include('article_edit.ejs') -%>
+
+
+            <%- include('../parts/footer.ejs'); -%>
